@@ -30,12 +30,14 @@ dependencies {
     api fileTree(dir: 'lib', include: ['*.jar'])
     api "io.github.adempiere:base:3.9.4.001"
     implementation 'org.json:json:20210307'
-}
+    
+	// https://mvnrepository.com/artifact/io.github.adempiere/asset
+	implementation("io.github.adempiere:asset:3.9.4.001")}
 
 jar {
     manifest {
         attributes(
-            'Implementation-Title': 'Appwrite Management System',
+            'Implementation-Title': 'Assets Management System',
             'Implementation-Version': version,
         )
     }

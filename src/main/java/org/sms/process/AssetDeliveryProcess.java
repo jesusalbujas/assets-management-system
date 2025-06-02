@@ -21,7 +21,6 @@ import org.sms.model.AssetDeliveryProcessAbstract;
 import org.compiere.asset.model.MAsset;
 import org.compiere.asset.model.MAssetDelivery;
 import org.compiere.util.DB;
-
 import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
