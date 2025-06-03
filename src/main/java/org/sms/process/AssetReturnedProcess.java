@@ -70,6 +70,8 @@ public class AssetReturnedProcess extends AssetReturnedProcessAbstract
 			
             Integer bpartnerId = asset.getC_BPartner_ID();
             Integer assetOrgId = asset.getAD_Org_ID();
+            String assetSerNo = asset.getSerNo();
+            
             
             asset.saveEx();
 
@@ -87,10 +89,11 @@ public class AssetReturnedProcess extends AssetReturnedProcessAbstract
             assetDelivery.setMovementDate(now);
             assetDelivery.setAD_User_ID(getUserId());
             assetDelivery.set_ValueOfColumn("PST_Employees_ID", getEmployeesId());
-            assetDelivery.setC_BPartner_ID(bpartnerId);
+            assetDelivery.setC_BPartner_ID(bpartnerId); // Mandatory Field
             assetDelivery.setAD_Org_ID(assetOrgId);
             assetDelivery.set_ValueOfColumn("PST_IsReturned", "Y");
             assetDelivery.set_ValueOfColumn("IsReturnedToOrganization", "Y");
+            assetDelivery.setSerNo(assetSerNo);
 
             assetDelivery.saveEx();
             
