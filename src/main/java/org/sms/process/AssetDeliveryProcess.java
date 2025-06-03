@@ -59,7 +59,8 @@ public class AssetDeliveryProcess extends AssetDeliveryProcessAbstract {
             
             Integer bpartnerId = asset.getC_BPartner_ID();
             Integer assetOrgId = asset.getAD_Org_ID();
-            
+            String assetSerNo = asset.getSerNo();
+
             asset.saveEx();
 
             // Obtain date of VE
@@ -69,14 +70,19 @@ public class AssetDeliveryProcess extends AssetDeliveryProcessAbstract {
             
             // create asset delivery
             MAssetDelivery assetDelivery = new MAssetDelivery(asset, getEmployeesId(), getUserId(), now);
+            
+            assetDelivery.setAD_Org_ID(assetOrgId);
+            assetDelivery.setSerNo(assetSerNo);
             assetDelivery.setDescription(getDescription());
             assetDelivery.set_ValueOfColumn("A_Asset_Status", "IU");
             assetDelivery.setMovementDate(now);
             assetDelivery.setAD_User_ID(getUserId());
-            assetDelivery.set_ValueOfColumn("PST_Employees_ID", getEmployeesId());
-            assetDelivery.setC_BPartner_ID(bpartnerId);
-            assetDelivery.setAD_Org_ID(assetOrgId);
             assetDelivery.set_ValueOfColumn("PST_IsAsigned", "Y");
+            assetDelivery.set_ValueOfColumn("PST_Employees_ID", getEmployeesId());
+            
+            assetDelivery.setC_BPartner_ID(bpartnerId); // Mandatory field
+
+
             assetDelivery.saveEx();
 
             String sql = "UPDATE PST_Employees SET PST_AssetAsigned = COALESCE(PST_AssetAsigned, 0) + 1 WHERE PST_Employees_ID = ?";
