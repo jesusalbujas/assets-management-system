@@ -20,7 +20,7 @@ package org.sms.model;
 import org.compiere.process.SvrProcess;
 
 /** Generated Process for (Asset Relocation Process)
- *  @author ADempiere (generated) 
+ *  @author Jesús Albujas
  *  @version Release 3.9.4
  */
 public abstract class AssetRelocationProcessAbstract extends SvrProcess {
