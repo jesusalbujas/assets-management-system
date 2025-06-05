@@ -62,8 +62,8 @@ public class UnsubscribeAsset extends UnsubscribeAssetAbstract
             // Asset
             asset.set_ValueOfColumn("PST_Location_ID", null);
             asset.set_ValueOfColumn("A_Asset_Status", assetStatus);
-            asset.setIsActive(false);
             asset.setIsDisposed(true);
+//            asset.setIsActive(false);
             asset.setAssetDisposalDate(nowVe);
             
             asset.saveEx();
